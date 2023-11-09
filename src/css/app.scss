@@ -1,8 +1,201 @@
 // app global css in SCSS form
 
+
+.q-page{
+  background-color: #e8f1f1;
+  display: flex;
+
+  gap: 40px;
+}
+
 .nav-bar{
+  text-align: center;
   font-size: 12px;
   text-decoration: none;
   color: white;
+}
 
+.q-tabs{
+  display: flex;
+  justify-items: center;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  margin-left: -160px;
+}
+
+.q-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.left-nav-tool{
+  background-color: #edf6f5;
+  height: 840px;
+  font-size: 15px;
+  box-shadow: 5px 0 5px rgba(0, 0, 0, 0.01);
+
+}
+
+.drawer-container {
+  width: 210px;
+  margin-top: 20px;
+  background-color: #edf6f5;
+  transition: width 0.3s;
+}
+
+.mini-state .drawer-content {
+  width: 48px;
+}
+
+
+.drawer-content {
+  padding: 0 10px 0 10px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.drawer-header {
+  padding: 8px;
+  display: flex;
+  align-items: center;
+}
+
+.drawer-item {
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.drawer-item:hover {
+  background-color: #d5d4d4;
+}
+
+.active {
+  background-color: #ddd;
+}
+
+.avatar {
+  margin-right: 8px;
+}
+
+.section {
+  flex-grow: 1;
+}
+
+.a4-page {
+  overflow-y: auto;
+  max-height: 780px;
+
+  width: 195mm;
+  height: 297mm;
+  margin: auto;
+  background-color: #ffffff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.main-contract-expand{
+  font-size: 24px;
+}
+
+.page-text{
+  text-align: center;
+  font-family: "Times New Roman", sans-serif;
+  font-size: 12px;
+}
+.page-text h6{
+  padding: 0;
+  margin: 2px 0 -10px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.page-text h5{
+  padding: 0;
+  margin: 0;
+  margin-top: -10px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+
+.page-text p{
+  text-align: justify;
+  margin: 0;
+  position: relative; /* Set position relative to create a context for the pseudo-element */
+}
+
+.page-text p::before {
+  content: "";
+  top: 0;
+  left: 30px; /* Adjust the left position to control the tab's distance from the text */
+  width: 0;
+  height: 0;
+  border-top: 5px solid transparent; /* Adjust the size of the tab */
+  border-bottom: 5px solid transparent; /* Adjust the size of the tab */
+  border-right: 20px solid #ffffff; /* Set the background color of the tab */
+}
+
+.content {
+  padding: 40px;
+  font-size: 12px;
+  line-height: 1.6;
+  text-align: justify;
+}
+
+.show-paper{
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.01);
+  font-weight: bold;
+  font-size: 16px;
+
+  background-color: #d2e4ef;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  border: none;
+  display: flex;
+  justify-content: space-between;
+  width: 195mm;
+  text-align: left;
+}
+
+.show-paper span{
+  color: #3683e2;
+  margin-left: 5px;
+}
+
+.show-paper .q-icon{
+  margin-right: 8px;
+}
+
+.main-contract{
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+table {
+  margin-top: 10px;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td h4{
+    padding: 0;
+  font-size: 12px;
+  margin: 2px 2px 2px 20px;
+  font-weight: bold;
+}
+
+th, td {
+  width: 200px ;
+  border: 1px solid black;
+  padding: 8px;
+  text-align: left;
+}
+
+.blank{
+  width: 170px;
 }

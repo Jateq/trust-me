@@ -4,8 +4,7 @@
 .q-page{
   background-color: #e8f1f1;
   display: flex;
-
-  gap: 40px;
+  gap: 20px;
 }
 
 .nav-bar{
@@ -21,7 +20,6 @@
   justify-content: center;
   align-content: center;
   align-items: center;
-  margin-left: -160px;
 }
 
 .q-link {
@@ -31,7 +29,7 @@
 
 .left-nav-tool{
   background-color: #edf6f5;
-  height: 840px;
+  height: 843px;
   font-size: 15px;
   box-shadow: 5px 0 5px rgba(0, 0, 0, 0.01);
 
@@ -90,7 +88,7 @@
   overflow-y: auto;
   max-height: 780px;
 
-  width: 195mm;
+  width: 210mm;
   height: 297mm;
   margin: auto;
   background-color: #ffffff;
@@ -115,8 +113,7 @@
 
 .page-text h5{
   padding: 0;
-  margin: 0;
-  margin-top: -10px;
+  margin: -10px 0 0;
   font-size: 12px;
   font-weight: bold;
 }
@@ -157,7 +154,7 @@
   border: none;
   display: flex;
   justify-content: space-between;
-  width: 195mm;
+  width: 210mm;
   text-align: left;
 }
 
@@ -198,4 +195,34 @@ th, td {
 
 .blank{
   width: 170px;
+}
+
+.right-logic{
+  padding: 15px 30px 30px 30px;
+  background-color: #ffffff;
+  overflow-y: auto;
+  max-height: 825px;
+  width: 450px;
+  font-size: 15px;
+  box-shadow: 5px 0 5px rgba(0, 0, 0, 0.01);
+  display: flex;
+  flex-direction: column;
+}
+
+.right-logic input{
+  background-color: #f8ffff;
+  border: solid 1px rgba(201, 210, 210, 0.5);
+  border-radius: 5px ;
+  padding: 5px 10px;
+}
+
+.right-logic input::placeholder {
+
+}
+
+.right-logic label{
+  font-size: 13px;
+  margin-top: 15px;
+  font-weight: bold;
+  color: rgb(128, 131, 130);
 }

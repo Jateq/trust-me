@@ -1,18 +1,37 @@
 <template>
+  <div style="display: flex; gap: 20px">
+    <div>
+
+      <button class="show-paper" @click="showA4Page">
+      <span>Посмотреть договор</span>
+      <q-icon class="main-contract-expand" :name="expandIcon"></q-icon>
+    </button>
+    <div  v-if="showPaper">
   <div class="a4-page">
     <div class="content">
       <div class="page-text">
         <h5>Договор предоплаты купли-продажи набора кухонной мебели</h5>
         <div style="display: flex; justify-content: space-between; margin-bottom: 10px">
-        <span> г. Алматы </span>       <span id="edit-date">«__» ______ ______  2023 г.</span>
+        <span> г. Алматы </span>
+
+          <div style="display: flex; gap: 5px">
+          <span id="day"> «{{day}}» </span>
+          <span id="month"> {{ month }} </span>
+            <span id="dayOfWeek">{{ dayOfWeek }}</span>
+            <span id="year">2023 г.</span>
+          </div>
+
         </div>
 
-        <p><span style="font-weight: bold">ТОО «Test»</span> в лице директора Иванов Иван, действующего на основании Устава, именуемое в дальнейшем «Продавец», с одной стороны, и гр. ______________________________________уд.личности: № ________, выданный ________, проживающий по адресу: _________________________________________, именуемый в дальнейшем «Покупатель», с другой стороны, заключили настоящий Договор предоплаты о нижеследующем:</p>
+
+        <p><span style="font-weight: bold">ТОО «Test»</span> в лице директора Иванов Иван, действующего на основании Устава, именуемое в дальнейшем «Продавец», с одной стороны, и гр. {{fullName}} уд.личности: №
+          {{ udostakNumber }}, выданный {{ udostakDate }}, проживающий по адресу:
+          {{ livingIn }}, именуемый в дальнейшем «Покупатель», с другой стороны, заключили настоящий Договор предоплаты о нижеследующем:</p>
 
         <h6> 1.	ПРЕДМЕТ ДОГОВОРА. </h6>
         <p>1.1. Продавец обязуется передать в собственность Покупателя набор мебели для кухни (далее «Товар»), а Покупатель обязуется принять Товар и уплатить Продавцу за него денежную сумму, в порядке и размере, предусмотренных Договором.</p>
         <p>1.2. Предметом Договора является Товар, заказанный Покупателем и соответствующий описанию, предусмотренного Приложением №1 к Основному Договору;</p>
-        <p>1.3. Покупателю могут быть предоставлены дополнительные услуги по замеру помещения, установке (монтажу) и доставке Товара:</p>
+        <p>1.3. Покупателю могут быть предоставлены дополнительные услуги по замеру помещения, установке (монтажу) и доставке Товара: {{dopUslugi}}</p>
         <p>1.3.1. стоимость Услуг не включается в стоимость Товара. Указанные услуги предоставляются Покупателю только при условии приобретения Товара.</p>
 
 
@@ -22,7 +41,8 @@
 
         <h6>3. ПОРЯДОК РАСЧЕТОВ И СУММА ДОГОВОРА</h6>
         <p>3.1. Цена Товара и дополнительных услуг определяется в момент заключения Основного Договора:</p>
-        <p>3.1.1. в момент заключения Договора предоплаты Покупатель вносит предоплату на счет Продавца в размере ____________ тенге;</p>
+        <p>3.1.1. в момент заключения Договора предоплаты Покупатель вносит предоплату на счет Продавца в размере
+          {{ money }} тенге;</p>
         <p>3.1.2. оставшуюся сумму Покупатель оплачивает в момент заключения Основного Договора.</p>
 
         <h6>4. СРОК ДЕЙСТВИЯ ДОГОВОРА</h6>
@@ -56,7 +76,7 @@
             </td>
             <td >
               <h4>ПОКУПАТЕЛЬ:</h4>
-              наименование  ФИО
+              наименование  ФИО {{fullName}}
 
             </td>
           </tr>
@@ -64,19 +84,19 @@
             <td>Юр. адрес: г. Алматы, ул. Дундича д. 245</td>
             <td>
               <div style="display: flex; flex-direction: column">
-              <span>Регистрация:</span>
-              <span>Место жительство: </span>
-              <span>Телефон</span>
+              <span>Регистрация: {{registration}}</span>
+              <span>Место жительство: {{livingIn}} </span>
+              <span>Телефон: {{phoneNumber}}</span>
             </div>
             </td>
           </tr>
           <tr>
             <td>Почтовый адрес:00000</td>
-            <td>Почтовый адрес:</td>
+            <td>Почтовый адрес: {{email}}</td>
           </tr>
           <tr>
             <td>БИН: 1111111111</td>
-            <td>ИИН</td>
+            <td>ИИН {{iin}}</td>
           </tr>
           <tr>
             <td>
@@ -88,8 +108,8 @@
             </td>
             <td>
               <div style="display: flex; flex-direction: column">
-                <span>Удост. личности №:</span>
-                <span>Выдано когда: ____  . Кем:___</span>
+                <span>Удост. личности №: {{udostakNumber}}</span>
+                <span>Выдано когда: {{ udostakDate }}  . Кем:{{udostakByWho}}</span>
               </div>
             </td>
           </tr>
@@ -98,12 +118,164 @@
 
       </div>
     </div>
+
+
+  </div>
+    </div>
+    </div>
+
+
+<!--inputs right logic-->
+
+    <div class="right-logic">
+      <label>Число:
+      </label>
+      <input type="number" placeholder="00" v-model="dayInput" @input="updateDay" />
+
+      <label> Месяц:
+      </label>
+      <input type="text" placeholder="Введите данные" v-model="monthInput" />
+
+      <label> День недели
+      </label>
+      <input type="text" placeholder="Введите данные" v-model="dayOfWeekInput"/>
+
+      <label> Полное имя
+      </label>
+      <input type="text" placeholder="Введите данные" v-model="fullNameInput"/>
+
+      <label> Номер удостоверения личности
+      </label>
+      <input type="number" placeholder="Введите данные" v-model="udostakNumberInput"/>
+
+      <label> Дата выдачи удостоверения личности
+      </label>
+      <input type="text" placeholder="00.00.0000" v-model="udostakDateInput"/>
+
+      <label> Кем выдано удостоверение личности
+      </label>
+      <input type="text" placeholder="Введите данные" v-model="udostakByWhoInput"/>
+
+      <label> Место жительства
+      </label>
+      <input type="text" placeholder="Введите данные" v-model="livingInInput"/>
+
+      <label> Дополнительные услуги
+      </label>
+      <input type="text" placeholder="Введите данные" v-model="dopUslugiInput"/>
+
+      <label> Предоплата
+      </label>
+      <input type="number" placeholder="Введите данные" v-model="moneyInput"/>
+
+      <label> Регистрация
+      </label>
+      <input type="text" placeholder="Введите данные" v-model="registrationInput"/>
+
+
+      <label> Номер телефона
+      </label>
+      <input type="number" placeholder="87007770077" v-model="phoneNumberInput"/>
+
+      <label> Почтовый адрес
+      </label>
+      <input type="email" placeholder="Введите данные" v-model="emailInput"/>
+
+      <label> ИИН
+      </label>
+      <input type="number" placeholder="Введите данные" v-model="iinInput"/>
+    </div>
   </div>
 </template>
 
 <script>
+
 export default {
+  data() {
+    return {
+      isExpanded: false,
+      showPaper: false,
+      dayInput: '',
+      monthInput: '',
+      dayOfWeekInput: '' ,
+      fullNameInput: '',
+      livingInInput: '',
+      udostakNumberInput: '',
+      udostakDateInput: '',
+      udostakByWhoInput: '',
+      dopUslugiInput: '',
+      moneyInput: '',
+      registrationInput: '',
+      phoneNumberInput: '',
+      emailInput: '',
+      iinInput: ''
+
+
+
+
+
+
+    }
+  },
+  computed: {
+    expandIcon() {
+      return this.isExpanded ? 'expand_less' : 'expand_more';
+    },
+    day() {
+      return this.dayInput;
+    },
+    month() {
+      return this.monthInput;
+    },
+    dayOfWeek() {
+      return this.dayOfWeekInput;
+    },
+    fullName() {
+      return this.fullNameInput;
+    },
+    livingIn(){
+      return this.livingInInput;
+    },
+    udostakNumber(){
+      return this.udostakNumberInput;
+    },
+    udostakDate(){
+      return this.udostakDateInput;
+    },
+    udostakByWho(){
+      return this.udostakByWhoInput;
+    },
+    dopUslugi(){
+      return this.dopUslugiInput;
+    },
+    money(){
+      return this.moneyInput;
+    },
+    registration(){
+      return this.registrationInput;
+    },
+    phoneNumber(){
+      return this.phoneNumberInput;
+    },
+    email(){
+      return this.emailInput;
+    },
+    iin(){
+      return this.iinInput;
+    }
+  },
+  methods: {
+    showA4Page() {
+      this.showPaper = !this.showPaper;
+      this.isExpanded = !this.isExpanded;
+    },
+    updateDay() {
+      this.dayInput = this.dayInput.slice(0, 2);
+    },
+
+  },
   name: 'A4Page'
 }
+
 </script>
 

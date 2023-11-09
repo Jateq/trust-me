@@ -14,7 +14,7 @@
         <q-tab name="TrustContract" label="TrustContract" />
         </router-link>
         <q-tab name="More" label="More" />
-        <q-tab name="number" label="+77000700455" />
+        <q-tab name="number" label="87000700455" />
         <q-tab name="Ru" label="Ru" />
       </q-tabs>
     </q-header>

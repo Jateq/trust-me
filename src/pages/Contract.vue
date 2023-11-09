@@ -57,18 +57,11 @@
         </div>
 
     <div class="main-contract">
-        <button class="show-paper" @click="showA4Page">
-          <span>Посмотреть договор</span>
-          <q-icon class="main-contract-expand" :name="expandIcon"></q-icon>
-        </button>
-        <div  v-if="showPaper">
+
           <A4Page/>
-        </div>
-    </div>
-
-    <div class="right-logic">
 
     </div>
+
   </q-page>
 </template>
 
@@ -81,22 +74,15 @@ export default {
   },
   data() {
     return {
-      miniState: false,
-      showPaper: false,
-      isExpanded: false
+
     };
     name: 'PageIndex'
   },
   methods: {
-    showA4Page() {
-      this.showPaper = !this.showPaper;
-      this.isExpanded = !this.isExpanded;
-    },
+
   },
   computed: {
-    expandIcon() {
-      return this.isExpanded ? 'expand_less' : 'expand_more';
-    }
+
   }
 };
 </script>
